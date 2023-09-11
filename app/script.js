@@ -67,6 +67,7 @@ function makeMoviediv(movie) {
   btnremove.addEventListener("click", function () {
     div.remove();
   });
+
   div.appendChild(h2);
   div.appendChild(h3);
   div.appendChild(btnremove);

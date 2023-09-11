@@ -6,8 +6,10 @@
   background-color: #a2a9c8;
 }
 #app {
+  margin: 5px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid;
 }
 @media (max-width: 768px) {
   #app {
@@ -23,4 +25,8 @@
   #app {
     grid-template-columns: 1fr;
   }
+}
+button {
+  border-radius: 5px;
+  border: 2px groove;
 }
