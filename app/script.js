@@ -29,6 +29,26 @@ let movies = [
     title: "Viram",
     releaseYear: "2022",
   },
+  {
+    id: "7",
+    title: "Spiderman - Far from home",
+    releaseYear: "2021",
+  },
+  {
+    id: "8",
+    title: "Don",
+    releaseYear: "2022",
+  },
+  {
+    id: "9",
+    title: "RRR",
+    releaseYear: "2022",
+  },
+  {
+    id: "10",
+    title: "KRK",
+    releaseYear: "2022",
+  },
 ];
 function makeMoviediv(movie) {
   const div = document.createElement("div");
@@ -44,17 +64,14 @@ function makeMoviediv(movie) {
   const btnremove = document.createElement("button");
   btnremove.setAttribute("id", `btn-${movie.id}`);
   btnremove.innerText = "Delete";
-  btnremove.addEventListener("click", funcremove);
-
+  btnremove.addEventListener("click", function () {
+    div.remove();
+  });
   div.appendChild(h2);
   div.appendChild(h3);
   div.appendChild(btnremove);
 
   return div;
-}
-function funcremove() {
-  const divr = document.querySelector("#card-${movie.id}");
-  divr.remove();
 }
 
 function appendtoapp(m) {
