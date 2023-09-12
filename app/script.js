@@ -194,10 +194,13 @@ function hookform() {
       title: name,
       releaseYear: year,
     };
-    addMovie(movie);
-    refresh();
-  });
-}
+    
+      addMovie(movie);
+      refresh();
+  
+    })
+  }
+
 
 //savetolocal
 function savetoLocal() {
