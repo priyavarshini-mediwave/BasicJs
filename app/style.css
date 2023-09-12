@@ -1,9 +1,13 @@
+body {
+  font-family: sans-serif;
+}
 .mv-card {
   margin: 10px;
   padding: 10px;
   border: 2px double;
   border-radius: 12px;
   background-color: #a2a9c8;
+  text-align: center;
 }
 #app {
   margin: 5px;
@@ -28,5 +32,10 @@
 }
 button {
   border-radius: 5px;
-  border: 2px groove;
+  border: 2px double;
+}
+.btn-remove {
+  background-color: antiquewhite;
+  border-style: ridge;
+  border-color: brown;
 }

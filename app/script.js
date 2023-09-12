@@ -26,7 +26,7 @@ let movies = [
   },
   {
     id: "6",
-    title: "Viram",
+    title: "Vikram",
     releaseYear: "2022",
   },
   {
@@ -62,10 +62,11 @@ function makeMoviediv(movie) {
   h3.innerText = movie.releaseYear;
 
   const btnremove = document.createElement("button");
+  btnremove.setAttribute("class", "btn-remove");
   btnremove.setAttribute("id", `btn-${movie.id}`);
   btnremove.innerText = "Delete";
   btnremove.addEventListener("click", function () {
-    div.remove();
+    removeMovie(movie["id"]);
   });
 
   div.appendChild(h2);
@@ -74,13 +75,59 @@ function makeMoviediv(movie) {
 
   return div;
 }
+function removeMovie(movieId) {
+  const toDeleteIndex = movies.findIndex((movie) => movie.id == movieId);
+  movies.splice(toDeleteIndex, 1);
+  updateUI();
+}
 
 function appendtoapp(m) {
   const app = document.querySelector("#app");
   app.appendChild(m);
 }
 
-for (let i = 0; i < movies.length; i++) {
-  let m = makeMoviediv(movies[i]);
-  appendtoapp(m);
+function clearapp() {
+  const app = document.querySelector("#app");
+  app.innerHTML = "";
 }
+//updateUI
+function updateUI() {
+  clearapp();
+  for (let i = 0; i < movies.length; i++) {
+    let m = makeMoviediv(movies[i]);
+    appendtoapp(m);
+  }
+}
+//addMovie
+function addMovie(movie) {
+  movies.push(movie);
+
+  updateUI();
+}
+function refresh() {
+  let n = document.querySelector("#movie-name");
+  let y = document.querySelector("#year");
+  n.value = "";
+  y.value = "";
+}
+//hookform
+function hookform() {
+  const form = document.querySelector("#Add-movie-form");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let name = document.querySelector("#movie-name").value;
+    let year = document.querySelector("#year").value;
+
+    const movie = {
+      id: new Date().getTime(),
+      title: name,
+      releaseYear: year,
+    };
+    addMovie(movie);
+    refresh();
+  });
+}
+
+//start of the app
+updateUI();
+hookform();
