@@ -39,3 +39,9 @@ button {
   border-style: ridge;
   border-color: brown;
 }
+#Add-movie-form {
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 30px;
+  border: 2px groove rgb(231, 181, 181);
+}
