@@ -44,4 +44,15 @@ button {
   margin-bottom: 10px;
   padding: 30px;
   border: 2px groove rgb(231, 181, 181);
+  text-align: center;
+}
+.btnUpdate-class {
+  background-color: antiquewhite;
+  border-style: ridge;
+  border-color: brown;
+}
+.btnEdit {
+  background-color: antiquewhite;
+  border-style: ridge;
+  border-color: brown;
 }
