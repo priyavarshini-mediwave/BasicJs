@@ -69,9 +69,16 @@ function makeMoviediv(movie) {
     removeMovie(movie["id"]);
   });
 
+  const btnEdit = document.createElement("button");
+  btnEdit.innerText = "Delete";
+  btnEdit.addEventListener('click',function(){
+    editMovie(movie['id']);
+  })
+
   div.appendChild(h2);
   div.appendChild(h3);
   div.appendChild(btnremove);
+  div.appendChild(btnEdit)
 
   return div;
 }
