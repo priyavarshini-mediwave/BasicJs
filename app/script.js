@@ -139,6 +139,7 @@ function removeMovie(movieId) {
   const toDeleteIndex = movies.findIndex((movie) => movie.id == movieId);
   movies.splice(toDeleteIndex, 1);
   updateUI();
+  savetoLocal();
 }
 
 function editMovie(movieId) {
