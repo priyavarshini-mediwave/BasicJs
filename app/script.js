@@ -198,16 +198,33 @@ function hookform() {
     let name = document.querySelector("#movie-name").value;
     let year = document.querySelector("#year").value;
 
-    const movie = {
-      id: new Date().getTime(),
-      title: name,
-      releaseYear: year,
-    };
+    if(!name&&!year){
+      alert("Enter all fields")
+    }
+    else{
+      if(year<1500){
+        alert("Enter year greater than 1500")
+      }
+      else if(year>2023){
+        alert("Enter year less than 2023")
+      }
+      else{
+        const movie = {
+          id: new Date().getTime(),
+          title: name,
+          releaseYear: year,
+        };
+    
+        addMovie(movie);
+        refresh();
+     
+      }
+    }
+    });
+    }
 
-    addMovie(movie);
-    refresh();
-  });
-}
+    
+
 
 //savetolocal
 function savetoLocal() {
