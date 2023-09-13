@@ -63,7 +63,7 @@
 let movies = [];
 function makeMoviediv(movie) {
   if (movie.isEdit) {
-    const div = document.createElement("div");
+    const div = document.createElement("form");
     div.setAttribute("class", "mv-card");
 
     const nameInput = document.createElement("input");
@@ -72,6 +72,7 @@ function makeMoviediv(movie) {
     nameInput.setAttribute("id", `edit-${movie.id}-name`);
     nameInput.setAttribute("placeholder", "Enter new movie name");
     nameInput.setAttribute("value", movie.title);
+    nameInput.required="true";
 
     const yearInput = document.createElement("input");
     yearInput.setAttribute("type", "number");
@@ -79,13 +80,19 @@ function makeMoviediv(movie) {
     yearInput.setAttribute("id", `edit-${movie.id}-year`);
     yearInput.setAttribute("placeholder", "Enter new movie year");
     yearInput.setAttribute("value", movie.releaseYear);
+    yearInput.setAttribute("min", "1500");
+    const yearmax=new Date().getFullYear();
+    yearInput.setAttribute("max", yearmax);
 
     const btnUpdate = document.createElement("button");
     btnUpdate.innerHTML = "UpdateMovie";
     btnUpdate.setAttribute("class", "btnUpdate-class");
-    btnUpdate.addEventListener("click", function () {
+    btnUpdate.setAttribute("type","submit")
+    div.addEventListener("submit", function () {
       const newTitle = document.querySelector(`#edit-${movie.id}-name`).value;
       const newYear = document.querySelector(`#edit-${movie.id}-year`).value;
+        
+
       const toUpdateIndex = movies.findIndex((m) => m.id == movie.id);
       if (toUpdateIndex != -1) {
         movies[toUpdateIndex]["title"] = newTitle;
@@ -93,8 +100,10 @@ function makeMoviediv(movie) {
         movies[toUpdateIndex]["isEdit"] = false;
         updateUI();
         savetoLocal();
-      }
+      
+    }
     });
+  
     div.appendChild(nameInput);
     div.appendChild(yearInput);
     div.appendChild(btnUpdate);
@@ -194,13 +203,11 @@ function hookform() {
       title: name,
       releaseYear: year,
     };
-    
-      addMovie(movie);
-      refresh();
-  
-    })
-  }
 
+    addMovie(movie);
+    refresh();
+  });
+}
 
 //savetolocal
 function savetoLocal() {
