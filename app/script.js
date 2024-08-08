@@ -205,8 +205,8 @@ function hookform() {
       if(year<1500){
         alert("Enter year greater than 1500")
       }
-      else if(year>2023){
-        alert("Enter year less than 2023")
+      else if(year>new Date().getFullYear()){
+        alert("Enter year less than  " +  new Date().getFullYear())
       }
       else{
         const movie = {
